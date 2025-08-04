@@ -57,6 +57,7 @@ export default function ContactSection() {
         }));
     };
 
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -377,8 +378,8 @@ export default function ContactSection() {
                                                 lineHeight: '1.5'
                                             }}
                                         >
-                                            123 Rue de la Technologie<br />
-                                            75000 Paris, France
+                                            45 Place du Général de Gaulle<br />
+                                            13300 Salon-de-Provence, France
                                         </p>
                                     </div>
                                 </div>
@@ -442,7 +443,7 @@ export default function ContactSection() {
                                             Téléphone
                                         </h4>
                                         <a
-                                            href="tel:+33123456789"
+                                            href="tel:+330490577634"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
                                                 fontSize: '14px',
@@ -451,7 +452,7 @@ export default function ContactSection() {
                                             }}
                                             className="hover:underline"
                                         >
-                                            +33 1 23 45 67 89
+                                            +33 04 90 57 76 34
                                         </a>
                                     </div>
                                 </div>

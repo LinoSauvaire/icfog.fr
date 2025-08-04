@@ -9,15 +9,15 @@ const NavBar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-26">
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="text-2xl font-semibold text-primary">
                             <Image
                                 src="/favicon.png"
                                 alt="ICFog Logo"
-                                width={60}
-                                height={20}
+                                width={100}
+                                height={100}
                                 priority
                             />
                         </Link>
@@ -28,28 +28,28 @@ const NavBar = () => {
                         <Link
                             href="#services"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
-                            style={{ fontFamily: 'Inter', fontSize: '16px', color: '#243940' }}
+                            style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
                         >
                             Services
                         </Link>
                         <Link
                             href="#about"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
-                            style={{ fontFamily: 'Inter', fontSize: '16px', color: '#243940' }}
+                            style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
                         >
                             À propos
                         </Link>
                         <Link
                             href="#pricing"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
-                            style={{ fontFamily: 'Inter', fontSize: '16px', color: '#243940' }}
+                            style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
                         >
                             Tarifs
                         </Link>
                         <Link
                             href="#contact"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
-                            style={{ fontFamily: 'Inter', fontSize: '16px', color: '#243940' }}
+                            style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
                         >
                             Contact
                         </Link>
@@ -59,7 +59,7 @@ const NavBar = () => {
                     <div className="hidden md:flex md:items-center">
                         <Link
                             href="#appointment"
-                            className="bg-accent hover:bg-primary text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200"
+                            className="bg-accent text-[20px] hover:bg-primary text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200"
                             style={{ backgroundColor: '#C38D43' }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = '#243940';

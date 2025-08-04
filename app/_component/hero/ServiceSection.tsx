@@ -28,14 +28,6 @@ const services: Service[] = [
         backIcon: '🖥️'
     },
     {
-        id: 3,
-        icon: '/assets/svg/PhoneIcon.svg',
-        title: 'Tablette et smartphone',
-        description: 'Réparation d\'appareils mobiles',
-        backText: 'Service complet de réparation pour tablettes et smartphones : écrans, batteries, composants.',
-        backIcon: '📱'
-    },
-    {
         id: 4,
         icon: '/assets/svg/FaxIcon.svg',
         title: 'Installation de périphériques',
