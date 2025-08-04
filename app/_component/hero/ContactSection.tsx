@@ -158,7 +158,8 @@ export default function ContactSection() {
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px'
+                                                fontSize: '16px',
+                                                color: '#000000'
                                             }}
                                         />
                                     </div>
@@ -184,7 +185,8 @@ export default function ContactSection() {
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px'
+                                                fontSize: '16px',
+                                                color: '#000000'
                                             }}
                                         />
                                     </div>
@@ -220,7 +222,8 @@ export default function ContactSection() {
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px'
+                                                fontSize: '16px',
+                                                color: '#000000'
                                             }}
                                         />
                                     </div>
@@ -245,7 +248,8 @@ export default function ContactSection() {
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px'
+                                                fontSize: '16px',
+                                                color: '#000000'
                                             }}
                                         />
                                     </div>
@@ -280,7 +284,8 @@ export default function ContactSection() {
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-200 resize-vertical"
                                         style={{
                                             fontFamily: 'Inter, sans-serif',
-                                            fontSize: '16px'
+                                            fontSize: '16px',
+                                            color: '#000000'
                                         }}
                                     />
                                 </div>
