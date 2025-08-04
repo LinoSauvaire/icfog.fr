@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from "next/link";
 
 interface PricingCard {
     id: number;
@@ -76,10 +77,11 @@ export default function AboutPricingSection() {
 
     return (
         <section
+            id={'about'}
             className="w-full"
             style={{ minHeight: '100vh' }}
         >
-            <div className="flex flex-col lg:flex-row w-full min-h-screen">
+            <div className="flex flex-col lg:flex-row w-full min-h-screen" id={"pricing"}>
 
                 {/* Section À propos (gauche) - 50% */}
                 <div className="w-full lg:w-1/2 relative flex items-center overflow-hidden">
@@ -258,23 +260,27 @@ export default function AboutPricingSection() {
 
                         {/* Bouton CTA centré */}
                         <div className="text-center">
-                            <button
-                                className="px-8 py-4 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105"
-                                style={{
-                                    backgroundColor: '#FFFFFF',
-                                    color: '#C38D43',
-                                    fontFamily: 'Inter, sans-serif',
-                                    fontSize: '16px'
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.backgroundColor = '#f8fafc';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.backgroundColor = '#FFFFFF';
-                                }}
-                            >
-                                Prendre RDV
-                            </button>
+                            <Link href={'#contact'} style={{
+                                scrollBehavior: 'smooth'
+                            }}>
+                                <button
+                                    className="px-8 py-4 font-semibold rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105"
+                                    style={{
+                                        backgroundColor: '#FFFFFF',
+                                        color: '#C38D43',
+                                        fontFamily: 'Inter, sans-serif',
+                                        fontSize: '16px'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.backgroundColor = '#f8fafc';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.backgroundColor = '#FFFFFF';
+                                    }}
+                                >
+                                    Prendre RDV
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

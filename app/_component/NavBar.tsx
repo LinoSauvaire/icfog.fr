@@ -12,7 +12,10 @@ const NavBar = () => {
                 <div className="flex justify-between items-center h-26">
                     {/* Logo */}
                     <div className="flex-shrink-0">
-                        <Link href="/" className="text-2xl font-semibold text-primary">
+                        <Link href="/" className="text-2xl font-semibold text-primary" onClick={(e) => {
+                            e.preventDefault();
+                            window.scrollTo({top: 0, behavior: 'smooth'});
+                        }}>
                             <Image
                                 src="/favicon.png"
                                 alt="ICFog Logo"
@@ -29,6 +32,10 @@ const NavBar = () => {
                             href="#services"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
                             style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#services')?.scrollIntoView({behavior: 'smooth'});
+                            }}
                         >
                             Services
                         </Link>
@@ -36,6 +43,10 @@ const NavBar = () => {
                             href="#about"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
                             style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#about')?.scrollIntoView({behavior: 'smooth'});
+                            }}
                         >
                             À propos
                         </Link>
@@ -43,6 +54,10 @@ const NavBar = () => {
                             href="#pricing"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
                             style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#pricing')?.scrollIntoView({behavior: 'smooth'});
+                            }}
                         >
                             Tarifs
                         </Link>
@@ -50,6 +65,10 @@ const NavBar = () => {
                             href="#contact"
                             className="text-primary hover:text-accent font-medium text-base transition-colors duration-200"
                             style={{ fontFamily: 'Inter', fontSize: '20px', color: '#243940' }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#contact')?.scrollIntoView({behavior: 'smooth'});
+                            }}
                         >
                             Contact
                         </Link>
@@ -58,9 +77,13 @@ const NavBar = () => {
                     {/* Bouton CTA Desktop */}
                     <div className="hidden md:flex md:items-center">
                         <Link
-                            href="#appointment"
+                            href="#contact"
                             className="bg-accent text-[20px] hover:bg-primary text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-200"
                             style={{ backgroundColor: '#C38D43' }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#contact')?.scrollIntoView({behavior: 'smooth'});
+                            }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.style.backgroundColor = '#243940';
                             }}
@@ -106,7 +129,11 @@ const NavBar = () => {
                             href="#services"
                             className="block text-primary hover:text-accent hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
                             style={{ fontFamily: 'Inter', color: '#243940' }}
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#services')?.scrollIntoView({behavior: 'smooth'});
+                                setIsOpen(false);
+                            }}
                         >
                             Services
                         </Link>
@@ -114,7 +141,11 @@ const NavBar = () => {
                             href="#about"
                             className="block text-primary hover:text-accent hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
                             style={{ fontFamily: 'Inter', color: '#243940' }}
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#about')?.scrollIntoView({behavior: 'smooth'});
+                                setIsOpen(false);
+                            }}
                         >
                             À propos
                         </Link>
@@ -122,7 +153,11 @@ const NavBar = () => {
                             href="#pricing"
                             className="block text-primary hover:text-accent hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
                             style={{ fontFamily: 'Inter', color: '#243940' }}
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#pricing')?.scrollIntoView({behavior: 'smooth'});
+                                setIsOpen(false);
+                            }}
                         >
                             Tarifs
                         </Link>
@@ -130,22 +165,30 @@ const NavBar = () => {
                             href="#contact"
                             className="block text-primary hover:text-accent hover:bg-gray-50 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200"
                             style={{ fontFamily: 'Inter', color: '#243940' }}
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.querySelector('#contact')?.scrollIntoView({behavior: 'smooth'});
+                                setIsOpen(false);
+                            }}
                         >
                             Contact
                         </Link>
                         <div className="pt-4 border-t border-gray-200">
                             <Link
-                                href="#appointment"
+                                href="#contact"
                                 className="block w-full text-center text-white px-4 py-3 rounded-lg font-medium transition-all duration-200"
-                                style={{ backgroundColor: '#C38D43' }}
+                                style={{ backgroundColor: '#C38D43', scrollBehavior: 'smooth' }}
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#243940';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.backgroundColor = '#C38D43';
                                 }}
-                                onClick={() => setIsOpen(false)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.querySelector('#contact')?.scrollIntoView({behavior: 'smooth'});
+                                    setIsOpen(false);
+                                }}
                             >
                                 Prendre rendez-vous
                             </Link>

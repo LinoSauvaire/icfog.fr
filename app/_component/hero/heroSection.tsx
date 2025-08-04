@@ -91,10 +91,11 @@ export default function HeroSection(){
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
                     <Link
                         href="#services"
-                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105"
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105 scroll-smooth"
                         style={{
                             backgroundColor: '#028BA3',
-                            fontSize: windowWidth < 768 ? '14px' : '16px'
+                            fontSize: windowWidth < 768 ? '14px' : '16px',
+                            scrollBehavior: 'smooth'
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = '#026b7a';
@@ -108,10 +109,11 @@ export default function HeroSection(){
 
                     <Link
                         href="#contact"
-                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white font-medium rounded-lg border-2 transition-all duration-200 hover:shadow-lg transform hover:scale-105"
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white font-medium rounded-lg border-2 transition-all duration-200 hover:shadow-lg transform hover:scale-105 scroll-smooth"
                         style={{
                             color: '#028BA3',
                             borderColor: '#028BA3',
+                            scrollBehavior: 'smooth',
                             fontSize: windowWidth < 768 ? '14px' : '16px'
                         }}
                         onMouseEnter={(e) => {

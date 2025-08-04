@@ -77,7 +77,7 @@ export default function ServicesSection() {
     };
 
     return (
-        <section className="py-16 px-4" style={{ backgroundColor: '#F5F5F5' }}>
+        <section id='services' className="py-16 px-4" style={{ backgroundColor: '#F5F5F5' }}>
             <div className="max-w-6xl mx-auto">
                 {/* Titre avec ligne décorative */}
                 <div className="text-center mb-12">
