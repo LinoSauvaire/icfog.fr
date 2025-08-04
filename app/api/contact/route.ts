@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 
         const mailOptions = {
             from: email,
-            to: 'sauvairelino@gmail.com',
+            to: 'gilles@icfog.fr',
             subject: `Nouveau message de contact - ${firstName} ${lastName}`,
             html: `
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
