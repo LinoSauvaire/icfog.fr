@@ -77,11 +77,14 @@ export default function AboutPricingSection() {
 
     return (
         <section
-            id={'about'}
             className="w-full"
             style={{ minHeight: '100vh' }}
         >
-            <div className="flex flex-col lg:flex-row w-full min-h-screen" id={"pricing"}>
+            <div className="flex flex-col lg:flex-row w-full min-h-screen">
+                {/* Ancre pour About */}
+                <div id="about" style={{ position: 'absolute', top: '-80px' }}></div>
+                {/* Ancre pour Pricing */}
+                <div id="pricing" style={{ position: 'absolute', top: '-80px' }}></div>
 
                 {/* Section À propos (gauche) - 50% */}
                 <div className="w-full lg:w-1/2 relative flex items-center overflow-hidden">
