@@ -127,15 +127,18 @@ export default function HeroSection(){
                     Le savoir-faire Apple au service de la maintenance et de la réparation
                 </p>
 
-                {/* Boutons - responsive */}
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+                {/* Bouton - responsive */}
+                <div className="flex justify-center items-center">
                     <Link
                         href="#services"
-                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105 scroll-smooth"
+                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-lg transform hover:scale-105"
                         style={{
                             backgroundColor: '#028BA3',
-                            fontSize: windowWidth < 768 ? '14px' : '16px',
-                            scrollBehavior: 'smooth'
+                            fontSize: windowWidth < 768 ? '14px' : '16px'
+                        }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = '#026b7a';
@@ -145,27 +148,6 @@ export default function HeroSection(){
                         }}
                     >
                         Nos services
-                    </Link>
-
-                    <Link
-                        href="#contact"
-                        className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white font-medium rounded-lg border-2 transition-all duration-200 hover:shadow-lg transform hover:scale-105 scroll-smooth"
-                        style={{
-                            color: '#028BA3',
-                            borderColor: '#028BA3',
-                            scrollBehavior: 'smooth',
-                            fontSize: windowWidth < 768 ? '14px' : '16px'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = '#028BA3';
-                            e.currentTarget.style.color = '#ffffff';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = '#ffffff';
-                            e.currentTarget.style.color = '#028BA3';
-                        }}
-                    >
-                        Contactez-nous
                     </Link>
                 </div>
             </div>

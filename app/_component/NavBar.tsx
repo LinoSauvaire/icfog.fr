@@ -93,7 +93,7 @@ const NavBar = () => {
                                 e.currentTarget.style.backgroundColor = '#C38D43';
                             }}
                         >
-                            Prendre rendez-vous
+                            Contactez-nous
                         </Link>
                     </div>
 
@@ -192,7 +192,7 @@ const NavBar = () => {
                                     setIsOpen(false);
                                 }}
                             >
-                                Prendre rendez-vous
+                                Contactez-nous
                             </Link>
                         </div>
                     </div>

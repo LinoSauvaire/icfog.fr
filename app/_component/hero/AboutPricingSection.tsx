@@ -78,13 +78,14 @@ export default function AboutPricingSection() {
     return (
         <section
             className="w-full"
-            style={{ minHeight: '100vh' }}
+            style={{ minHeight: '100vh', position: 'relative' }}
         >
+            {/* Ancre pour About */}
+            <div id="about" style={{ position: 'absolute', top: '-80px' }}></div>
+            {/* Ancre pour Pricing */}
+            <div id="pricing" style={{ position: 'absolute', top: '-80px' }}></div>
+            
             <div className="flex flex-col lg:flex-row w-full min-h-screen">
-                {/* Ancre pour About */}
-                <div id="about" style={{ position: 'absolute', top: '-80px' }}></div>
-                {/* Ancre pour Pricing */}
-                <div id="pricing" style={{ position: 'absolute', top: '-80px' }}></div>
 
                 {/* Section À propos (gauche) - 50% */}
                 <div className="w-full lg:w-1/2 relative flex items-center overflow-hidden">
@@ -136,9 +137,11 @@ export default function AboutPricingSection() {
                                         lineHeight: '1.7'
                                     }}
                                 >
-                                    Depuis plus de 10 ans, notre passion pour l'univers Apple nous guide dans chaque intervention.
-                                    Nous combinons une expertise technique pointue avec une approche artisanale, garantissant à chaque
-                                    client un service personnalisé et des réparations durables.
+                                    <strong>Une passion pour vos appareils, une expertise fiable</strong>
+                                    <br /><br />
+                                    Depuis plus de 10 ans, notre passion pour l'univers Apple guide chacune de nos interventions. 
+                                    Nous allions expertise technique pointue et savoir-faire artisanal pour offrir à chaque client 
+                                    un service personnalisé et des réparations durables.
                                 </p>
 
                                 <p
@@ -150,8 +153,8 @@ export default function AboutPricingSection() {
                                         lineHeight: '1.7'
                                     }}
                                 >
-                                    Notre atelier est équipé des derniers outils de diagnostic et nous travaillons exclusivement
-                                    avec des pièces certifiées. Témoignage de notre confiance en la qualité de notre travail.
+                                    Notre atelier est équipé des outils de diagnostic les plus récents, et nous utilisons uniquement 
+                                    des pièces certifiées, garantissant un travail de qualité irréprochable.
                                 </p>
 
                                 <p
@@ -163,9 +166,21 @@ export default function AboutPricingSection() {
                                         lineHeight: '1.7'
                                     }}
                                 >
-                                    Au-delà de la simple réparation, nous accompagnons nos clients dans l'optimisation et la
-                                    préservation de leurs appareils Apple. Notre philosophie : redonner vie à vos outils numériques
-                                    avec le même soin que vous leur portez au quotidien.
+                                    Si notre cœur reste Apple, nous accompagnons également nos clients sur PC et sur tous les systèmes 
+                                    Linux et Windows, pour l'optimisation, la maintenance ou la réparation de leurs appareils.
+                                </p>
+
+                                <p
+                                    className="leading-relaxed"
+                                    style={{
+                                        fontFamily: 'Inter, sans-serif',
+                                        fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                        color: '#2E2E2E',
+                                        lineHeight: '1.7'
+                                    }}
+                                >
+                                    <em>Notre philosophie : redonner vie à vos outils numériques avec le même soin et la même attention 
+                                    que vous leur portez au quotidien.</em>
                                 </p>
                             </div>
                         </div>
