@@ -183,7 +183,7 @@ export default function ServicesSection() {
                                 >
                                     {/* Icône secondaire */}
                                     <div
-                                        className="text-3xl mb-4"
+                                        className="text-6xl mb-4"
                                         style={{ color: '#C38D43' }}
                                     >
                                         {service.backIcon}

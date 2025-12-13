@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 
+
+
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -199,5 +201,7 @@ const NavBar = () => {
         </nav>
     );
 };
+
+
 
 export default NavBar;

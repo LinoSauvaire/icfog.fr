@@ -29,7 +29,7 @@ export default function Footer() {
                             lineHeight: '1.6'
                         }}
                     >
-                        © IC Fog 2025 – Maintenance Apple certifiée –
+                        © IcFog 2025 – Apple Friendly –
                         <Link
                             href="/mentions-legales"
                             className="hover:underline ml-1 transition-all duration-200"

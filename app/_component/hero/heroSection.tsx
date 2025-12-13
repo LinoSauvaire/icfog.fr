@@ -31,6 +31,18 @@ export default function HeroSection(){
 
     return (
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            <style jsx>{`
+                @keyframes slideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `}</style>
             {/* Image de fond avec déZoom responsive */}
             <img
                 src="/assets/image0.jpeg"
@@ -72,7 +84,35 @@ export default function HeroSection(){
                         fontSize: windowWidth < 768 ? 'clamp(28px, 8vw, 36px)' : 'clamp(32px, 5vw, 48px)'
                     }}
                 >
-                    Réparer. Préserver. Optimiser.
+                    <span 
+                        className="inline-block"
+                        style={{
+                            animation: 'slideIn 0.6s ease-out forwards',
+                            opacity: 0
+                        }}
+                    >
+                        Réparer
+                    </span>
+                    {' '}
+                    <span 
+                        className="inline-block"
+                        style={{
+                            animation: 'slideIn 0.6s ease-out 0.3s forwards',
+                            opacity: 0
+                        }}
+                    >
+                        Préserver
+                    </span>
+                    {' '}
+                    <span 
+                        className="inline-block"
+                        style={{
+                            animation: 'slideIn 0.6s ease-out 0.6s forwards',
+                            opacity: 0
+                        }}
+                    >
+                        Optimiser
+                    </span>
                 </h1>
 
                 {/* Sous-titre */}
@@ -84,7 +124,7 @@ export default function HeroSection(){
                         fontSize: windowWidth < 768 ? 'clamp(14px, 4vw, 18px)' : 'clamp(16px, 2.5vw, 20px)'
                     }}
                 >
-                    Spécialiste Apple en maintenance et réparation.
+                    Le savoir-faire Apple au service de la maintenance et de la réparation
                 </p>
 
                 {/* Boutons - responsive */}
