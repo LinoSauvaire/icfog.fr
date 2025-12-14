@@ -8,14 +8,12 @@ export default function CarouselSection() {
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
     const images = [
-        '/assets/carrousels/1.jpg',
-        '/assets/carrousels/2.jpg',
-        '/assets/carrousels/3.jpg',
-        '/assets/carrousels/4.jpg',
-        '/assets/carrousels/5.jpg',
-        '/assets/carrousels/6.jpg',
-        '/assets/carrousels/7.jpg',
-        '/assets/carrousels/8.jpg'
+        '/assets/carrousels/1.png',
+        '/assets/carrousels/2.png',
+        '/assets/carrousels/3.png',
+        '/assets/carrousels/4.png',
+        '/assets/carrousels/5.png',
+        '/assets/carrousels/6.png'
     ];
 
     useEffect(() => {
