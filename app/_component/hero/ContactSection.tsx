@@ -1,6 +1,12 @@
 
 'use client';
 import { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
+
+const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
 
 interface FormData {
     firstName: string;
@@ -23,9 +29,12 @@ export default function ContactSection() {
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
     const [windowWidth, setWindowWidth] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
+        setIsMounted(true);
+        
         const handleResize = () => setWindowWidth(window.innerWidth);
         setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
@@ -370,7 +379,7 @@ export default function ContactSection() {
                                             className="font-semibold mb-1"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px',
+                                                fontSize: '18px',
                                                 color: '#334155'
                                             }}
                                         >
@@ -379,7 +388,7 @@ export default function ContactSection() {
                                         <p
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '14px',
+                                                fontSize: '16px',
                                                 color: '#64748b',
                                                 lineHeight: '1.5'
                                             }}
@@ -406,7 +415,7 @@ export default function ContactSection() {
                                             className="font-semibold mb-1"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px',
+                                                fontSize: '18px',
                                                 color: '#334155'
                                             }}
                                         >
@@ -416,7 +425,7 @@ export default function ContactSection() {
                                             href="mailto:gilles@icfog.fr"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '14px',
+                                                fontSize: '16px',
                                                 color: '#64748b',
                                                 textDecoration: 'none'
                                             }}
@@ -442,7 +451,7 @@ export default function ContactSection() {
                                             className="font-semibold mb-1"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '16px',
+                                                fontSize: '18px',
                                                 color: '#334155'
                                             }}
                                         >
@@ -452,7 +461,7 @@ export default function ContactSection() {
                                             href="tel:+330490577634"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
-                                                fontSize: '14px',
+                                                fontSize: '16px',
                                                 color: '#64748b',
                                                 textDecoration: 'none'
                                             }}
@@ -463,6 +472,45 @@ export default function ContactSection() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Carte Leaflet */}
+                            {isMounted && (
+                                <div className="mt-8">
+                                    <link
+                                        rel="stylesheet"
+                                        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                                        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+                                        crossOrigin=""
+                                    />
+                                    <div
+                                        style={{
+                                            height: '300px',
+                                            width: '100%',
+                                            borderRadius: '12px',
+                                            overflow: 'hidden',
+                                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                                        }}
+                                    >
+                                        <MapContainer
+                                            center={[43.6425, 5.0983]}
+                                            zoom={16}
+                                            style={{ height: '100%', width: '100%' }}
+                                        >
+                                            <TileLayer
+                                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            />
+                                            <Marker position={[43.641081492255296, 5.095579902413643]}>
+                                                <Popup>
+                                                    <strong>IcFog Informatique</strong><br />
+                                                    45 Place du Général de Gaulle<br />
+                                                    13300 Salon-de-Provence
+                                                </Popup>
+                                            </Marker>
+                                        </MapContainer>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

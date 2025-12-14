@@ -134,7 +134,8 @@ export default function AboutPricingSection() {
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
                                         color: '#2E2E2E',
-                                        lineHeight: '1.7'
+                                        lineHeight: '1.7',
+                                        textAlign: 'justify'
                                     }}
                                 >
                                     <strong>Une passion pour vos appareils, une expertise fiable</strong>
@@ -150,7 +151,8 @@ export default function AboutPricingSection() {
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
                                         color: '#2E2E2E',
-                                        lineHeight: '1.7'
+                                        lineHeight: '1.7',
+                                        textAlign: 'justify'
                                     }}
                                 >
                                     Notre atelier est équipé des outils de diagnostic les plus récents, et nous utilisons uniquement 
@@ -163,7 +165,8 @@ export default function AboutPricingSection() {
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
                                         color: '#2E2E2E',
-                                        lineHeight: '1.7'
+                                        lineHeight: '1.7',
+                                        textAlign: 'justify'
                                     }}
                                 >
                                     Si notre cœur reste Apple, nous accompagnons également nos clients sur PC et sur tous les systèmes 
@@ -176,7 +179,8 @@ export default function AboutPricingSection() {
                                         fontFamily: 'Inter, sans-serif',
                                         fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
                                         color: '#2E2E2E',
-                                        lineHeight: '1.7'
+                                        lineHeight: '1.7',
+                                        textAlign: 'justify'
                                     }}
                                 >
                                     <em>Notre philosophie : redonner vie à vos outils numériques avec le même soin et la même attention 

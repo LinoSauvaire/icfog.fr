@@ -87,27 +87,27 @@ export default function HeroSection(){
                     <span 
                         className="inline-block"
                         style={{
-                            animation: 'slideIn 0.6s ease-out forwards',
-                            opacity: 0
+                            animation: 'slideIn 0.8s ease-out forwards',
+                            opacity: 0,
+                            marginRight: '12px'
                         }}
                     >
                         Réparer
                     </span>
-                    {' '}
                     <span 
                         className="inline-block"
                         style={{
-                            animation: 'slideIn 0.6s ease-out 0.3s forwards',
-                            opacity: 0
+                            animation: 'slideIn 0.8s ease-out 0.4s forwards',
+                            opacity: 0,
+                            marginRight: '12px'
                         }}
                     >
                         Préserver
                     </span>
-                    {' '}
                     <span 
                         className="inline-block"
                         style={{
-                            animation: 'slideIn 0.6s ease-out 0.6s forwards',
+                            animation: 'slideIn 0.8s ease-out 0.8s forwards',
                             opacity: 0
                         }}
                     >
