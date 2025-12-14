@@ -3,153 +3,191 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function CarouselSection() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [windowWidth, setWindowWidth] = useState(0);
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+    const [direction, setDirection] = useState<'left' | 'right'>('right');
 
     const images = [
-        '/assets/carrousels/1.png',
-        '/assets/carrousels/2.png',
-        '/assets/carrousels/3.png',
-        '/assets/carrousels/4.png',
-        '/assets/carrousels/5.png',
-        '/assets/carrousels/6.png'
+        '/assets/carrousels/1.webp',
+        '/assets/carrousels/2.webp',
+        '/assets/carrousels/3.webp',
+        '/assets/carrousels/4.webp',
+        '/assets/carrousels/5.webp',
+        '/assets/carrousels/6.webp'
     ];
 
     useEffect(() => {
-        setWindowWidth(window.innerWidth);
-        const handleResize = () => setWindowWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    // Auto-play
     useEffect(() => {
-        if (!isAutoPlaying) return;
-        
         const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % images.length);
+            setDirection('right');
+            setCurrentIndex((prev) => (prev + 1) % images.length);
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [isAutoPlaying, images.length]);
-
-    const goToSlide = (index: number) => {
-        setCurrentSlide(index);
-        setIsAutoPlaying(false);
-        setTimeout(() => setIsAutoPlaying(true), 10000);
-    };
+    }, [images.length]);
 
     const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % images.length);
-        setIsAutoPlaying(false);
-        setTimeout(() => setIsAutoPlaying(true), 10000);
+        setDirection('right');
+        setCurrentIndex((prev) => (prev + 1) % images.length);
     };
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
-        setIsAutoPlaying(false);
-        setTimeout(() => setIsAutoPlaying(true), 10000);
+        setDirection('left');
+        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    };
+
+    const goToSlide = (index: number) => {
+        setDirection(index > currentIndex ? 'right' : 'left');
+        setCurrentIndex(index);
+    };
+
+    const getVisibleImages = () => {
+        if (isMobile) {
+            return [{ img: images[currentIndex], position: 'center' }];
+        }
+        const prev = (currentIndex - 1 + images.length) % images.length;
+        const next = (currentIndex + 1) % images.length;
+        return [
+            { img: images[prev], position: 'left' },
+            { img: images[currentIndex], position: 'center' },
+            { img: images[next], position: 'right' }
+        ];
     };
 
     return (
-        <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#FFFFFF' }}>
-            <div className="max-w-6xl mx-auto">
+        <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#F9FAFB' }}>
+            <div className="max-w-7xl mx-auto">
                 {/* Titre */}
                 <div className="text-center mb-12">
                     <h2
-                        className="text-2xl md:text-3xl font-bold mb-4"
+                        className="text-3xl md:text-4xl font-bold mb-4"
                         style={{
                             fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                            color: '#243940',
-                            fontSize: windowWidth < 768 ? '28px' : '32px'
+                            color: '#243940'
                         }}
                     >
                         Notre atelier en images
                     </h2>
                     <div
-                        className="w-20 h-0.5 mx-auto"
+                        className="w-20 h-1 mx-auto rounded-full"
                         style={{ backgroundColor: '#C38D43' }}
                     ></div>
                 </div>
 
                 {/* Carrousel */}
                 <div className="relative">
-                    <div
-                        className="relative overflow-hidden rounded-2xl"
+                    {/* Container des images */}
+                    <div className="relative overflow-visible">
+                        <div 
+                            className="flex gap-4 md:gap-6 items-center justify-center"
+                            style={{
+                                padding: isMobile ? '0' : '0 2rem',
+                                minHeight: isMobile ? '300px' : '420px'
+                            }}
+                        >
+                            {getVisibleImages().map((item, idx) => {
+                                const isCenter = isMobile ? true : item.position === 'center';
+                                const isLeft = item.position === 'left';
+                                const isRight = item.position === 'right';
+                                
+                                return (
+                                    <div
+                                        key={`${item.img}-${idx}`}
+                                        className="transition-all ease-in-out"
+                                        style={{
+                                            width: isMobile ? '100%' : isCenter ? '42%' : '24%',
+                                            minWidth: isMobile ? '100%' : isCenter ? '42%' : '24%',
+                                            opacity: isCenter ? 1 : 0.5,
+                                            transform: `
+                                                scale(${isCenter ? 1 : 0.88})
+                                                translateY(${isCenter ? '0px' : '20px'})
+                                            `,
+                                            filter: isCenter ? 'none' : 'brightness(0.65)',
+                                            zIndex: isCenter ? 20 : 10,
+                                            transitionDuration: '1500ms',
+                                            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                                        }}
+                                    >
+                                        <div
+                                            className="relative rounded-xl overflow-hidden"
+                                            style={{
+                                                height: isMobile ? '300px' : isCenter ? '380px' : '320px',
+                                                boxShadow: isCenter 
+                                                    ? '0 20px 40px -12px rgba(0, 0, 0, 0.25)' 
+                                                    : '0 8px 20px -5px rgba(0, 0, 0, 0.12)'
+                                            }}
+                                        >
+                                            <Image
+                                                src={item.img}
+                                                alt="Atelier"
+                                                fill
+                                                style={{
+                                                    objectFit: 'cover',
+                                                    objectPosition: 'center'
+                                                }}
+                                                quality={100}
+                                                unoptimized
+                                            />
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Boutons navigation */}
+                    <button
+                        onClick={prevSlide}
+                        className="absolute left-0 md:-left-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110"
                         style={{
-                            height: windowWidth < 768 ? '300px' : windowWidth < 1024 ? '400px' : '500px',
-                            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                            backgroundColor: '#C38D43',
+                            color: '#FFFFFF',
+                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2)'
                         }}
                     >
-                        {images.map((image, index) => (
-                            <div
-                                key={index}
-                                className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                                    index === currentSlide
-                                        ? 'opacity-100 translate-x-0'
-                                        : index < currentSlide
-                                        ? 'opacity-0 -translate-x-full'
-                                        : 'opacity-0 translate-x-full'
-                                }`}
-                            >
-                                <img
-                                    src={image}
-                                    alt={`Atelier ${index + 1}`}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover'
-                                    }}
-                                />
-                            </div>
-                        ))}
+                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
 
-                        {/* Boutons navigation */}
+                    <button
+                        onClick={nextSlide}
+                        className="absolute right-0 md:-right-4 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-3 md:p-4 transition-all duration-300 hover:scale-110"
+                        style={{
+                            backgroundColor: '#C38D43',
+                            color: '#FFFFFF',
+                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2)'
+                        }}
+                    >
+                        <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+
+                {/* Indicateurs */}
+                <div className="flex justify-center mt-8 gap-2">
+                    {images.map((_, index) => (
                         <button
-                            onClick={prevSlide}
-                            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-200 hover:scale-110"
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            className="transition-all duration-300"
                             style={{
-                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                                color: '#243940'
+                                width: index === currentIndex ? '32px' : '10px',
+                                height: '10px',
+                                borderRadius: '5px',
+                                backgroundColor: index === currentIndex ? '#C38D43' : '#D1D5DB'
                             }}
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-
-                        <button
-                            onClick={nextSlide}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transition-all duration-200 hover:scale-110"
-                            style={{
-                                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                                color: '#243940'
-                            }}
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    {/* Indicateurs */}
-                    <div className="flex justify-center mt-6 gap-3">
-                        {images.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`transition-all duration-300 rounded-full ${
-                                    index === currentSlide
-                                        ? 'w-12 h-3'
-                                        : 'w-3 h-3 hover:scale-125'
-                                }`}
-                                style={{
-                                    backgroundColor: index === currentSlide ? '#C38D43' : '#D1D5DB'
-                                }}
-                                aria-label={`Aller à l'image ${index + 1}`}
-                            />
-                        ))}
-                    </div>
+                            aria-label={`Aller à l'image ${index + 1}`}
+                        />
+                    ))}
                 </div>
             </div>
         </section>

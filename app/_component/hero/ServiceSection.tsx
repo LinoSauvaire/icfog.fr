@@ -28,6 +28,14 @@ const services: Service[] = [
         backIcon: '🖥️'
     },
     {
+        id: 3,
+        icon: '/assets/svg/CyberSecurityIcon.svg',
+        title: 'Gestion & installation de réseaux',
+        description: 'Solutions réseau professionnelles',
+        backText: 'Configuration et sécurisation de réseaux d\'entreprise. Installation de serveurs et équipements réseau.',
+        backIcon: '🌐'
+    },
+    {
         id: 4,
         icon: '/assets/svg/FaxIcon.svg',
         title: 'Installation de périphériques',
@@ -43,14 +51,15 @@ const services: Service[] = [
         backText: 'Assistance technique complète et dépannage informatique sur site ou à distance selon vos besoins.',
         backIcon: '💻'
     },
-    {
+     {
         id: 6,
-        icon: '/assets/svg/CyberSecurityIcon.svg',
-        title: 'Gestion & installation de réseaux',
-        description: 'Solutions réseau professionnelles',
-        backText: 'Configuration et sécurisation de réseaux d\'entreprise. Installation de serveurs et équipements réseau.',
-        backIcon: '🌐'
+        icon: '/assets/svg/DatabaseIcon.svg',
+        title: 'Sauvegarde & récupération de données',
+        description: 'Protection et restauration de vos données',
+        backText: 'Nous mettons en place des solutions de sauvegarde adaptées à vos besoins et à votre environnement. En cas de perte de données, nous intervenons pour tenter leur récupération et, si nécessaire, faisons appel à un laboratoire spécialisé. Un accompagnement est assuré pour mieux sécuriser vos données au quotidien.',
+        backIcon: '💾'
     }
+    
 ];
 
 export default function ServicesSection() {

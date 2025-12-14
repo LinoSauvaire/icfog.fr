@@ -5,16 +5,15 @@ import Link from "next/link";
 interface PricingCard {
     id: number;
     title: string;
-    price: string;
     services: string[];
     popular?: boolean;
+    isLinks?: boolean;
 }
 
 const pricingCards: PricingCard[] = [
     {
         id: 1,
         title: 'Diagnostic',
-        price: '29€',
         services: [
             'Analyse complète du système',
             'Identification des pannes',
@@ -25,7 +24,6 @@ const pricingCards: PricingCard[] = [
     {
         id: 2,
         title: 'Entretien complet',
-        price: '79€',
         services: [
             'Nettoyage interne complet',
             'Mise à jour système',
@@ -37,7 +35,6 @@ const pricingCards: PricingCard[] = [
     {
         id: 3,
         title: 'Réparation Mac',
-        price: 'Sur devis',
         services: [
             'Remplacement composants',
             'Réparation carte mère',
@@ -47,13 +44,13 @@ const pricingCards: PricingCard[] = [
     },
     {
         id: 4,
-        title: 'Remplacement écran iPhone',
-        price: 'À partir de 89€',
+        title: 'Outils recommandés',
         services: [
-            'Écran certifié qualité originale',
-            'Installation professionnelle',
-            'Test complet tactile',
-        ]
+            'AnyDesk|https://anydesk.com/fr|Accès à distance sécurisé',
+            'RustDesk|https://rustdesk.com/fr/|Alternative open source pour le contrôle distant',
+            'ESET|https://www.eset.com/fr/home/free-trial/|Protection antivirus professionnelle'
+        ],
+        isLinks: true
     }
 ];
 
@@ -208,7 +205,7 @@ export default function AboutPricingSection() {
                                     lineHeight: '1.2'
                                 }}
                             >
-                                Tarifs & prestations
+                                Prestations
                             </h2>
                         </div>
 
@@ -217,13 +214,19 @@ export default function AboutPricingSection() {
                             {pricingCards.map((card) => (
                                 <div
                                     key={card.id}
-                                    className={`relative bg-primary rounded-xl p-6 transition-all duration-300 hover:translate-y-[-2px] ${
+                                    className={`relative rounded-xl p-6 transition-all duration-300 hover:translate-y-[-2px] ${
                                         card.popular ? 'ring-2 ring-offset-2 ring-offset-slate-700' : ''
                                     }`}
                                     style={{
-                                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                                        backgroundColor: card.isLinks ? 'rgba(255, 255, 255, 0.95)' : undefined,
+                                        backgroundImage: card.isLinks 
+                                            ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%)'
+                                            : undefined,
+                                        border: card.isLinks ? '1px solid rgba(195, 141, 67, 0.2)' : undefined,
+                                        boxShadow: card.isLinks 
+                                            ? '0 20px 25px -5px rgba(195, 141, 67, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'
+                                            : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
                                         filter: 'drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))',
-                                        // ringColor: card.popular ? '#C38D43' : 'transparent'
                                     }}
                                 >
                                     {/* Badge populaire */}
@@ -238,44 +241,131 @@ export default function AboutPricingSection() {
 
                                     {/* Titre */}
                                     <h3
-                                        className="mb-4 font-semibold text-center"
+                                        className="mb-5 font-semibold text-center"
                                         style={{
-                                            fontFamily: 'Inter, sans-serif',
-                                            fontSize: '18px',
-                                            color: '#FFFF'
+                                            fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
+                                            fontSize: card.isLinks ? '20px' : '18px',
+                                            color: card.isLinks ? '#C38D43' : '#FFFF',
+                                            letterSpacing: card.isLinks ? '0.3px' : 'normal'
                                         }}
                                     >
                                         {card.title}
                                     </h3>
 
                                     {/* Liste des services */}
-                                    <ul className="space-y-2">
-                                        {card.services.map((service, index) => (
-                                            <li
-                                                key={index}
-                                                className="flex items-start"
-                                                style={{
-                                                    fontFamily: 'Inter, sans-serif',
-                                                    fontSize: '12px',
-                                                    color: '#64748b'
-                                                }}
-                                            >
-                                                <svg
-                                                    className="w-3 h-3 mr-2 mt-0.5 flex-shrink-0"
-                                                    style={{ color: '#10b981' }}
-                                                    fill="currentColor"
-                                                    viewBox="0 0 20 20"
+                                    {card.isLinks ? (
+                                        <div className="space-y-3">
+                                            {card.services.map((service, index) => {
+                                                const [name, url, description] = service.split('|');
+                                                return (
+                                                    <a
+                                                        key={index}
+                                                        href={url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="block p-3 rounded-lg transition-all duration-200 hover:scale-[1.02]"
+                                                        style={{
+                                                            backgroundColor: 'rgba(195, 141, 67, 0.05)',
+                                                            border: '1px solid rgba(195, 141, 67, 0.15)'
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.backgroundColor = 'rgba(195, 141, 67, 0.1)';
+                                                            e.currentTarget.style.borderColor = 'rgba(195, 141, 67, 0.3)';
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.backgroundColor = 'rgba(195, 141, 67, 0.05)';
+                                                            e.currentTarget.style.borderColor = 'rgba(195, 141, 67, 0.15)';
+                                                        }}
+                                                    >
+                                                        <div className="flex items-start gap-3">
+                                                            <div 
+                                                                className="p-2 rounded-md flex-shrink-0 mt-0.5"
+                                                                style={{ backgroundColor: 'rgba(195, 141, 67, 0.15)' }}
+                                                            >
+                                                                <svg
+                                                                    className="w-4 h-4"
+                                                                    fill="none"
+                                                                    stroke="#C38D43"
+                                                                    viewBox="0 0 24 24"
+                                                                    strokeWidth={2}
+                                                                >
+                                                                    <path
+                                                                        strokeLinecap="round"
+                                                                        strokeLinejoin="round"
+                                                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                                                    />
+                                                                </svg>
+                                                            </div>
+                                                            <div className="flex-1 min-w-0">
+                                                                <div
+                                                                    className="font-semibold mb-1"
+                                                                    style={{
+                                                                        fontFamily: 'Inter, sans-serif',
+                                                                        fontSize: '14px',
+                                                                        color: '#C38D43'
+                                                                    }}
+                                                                >
+                                                                    {name}
+                                                                </div>
+                                                                <div
+                                                                    className="leading-relaxed"
+                                                                    style={{
+                                                                        fontFamily: 'Inter, sans-serif',
+                                                                        fontSize: '11px',
+                                                                        color: '#64748b',
+                                                                        lineHeight: '1.4'
+                                                                    }}
+                                                                >
+                                                                    {description}
+                                                                </div>
+                                                            </div>
+                                                            <svg
+                                                                className="w-4 h-4 flex-shrink-0 mt-1"
+                                                                fill="none"
+                                                                stroke="#C38D43"
+                                                                viewBox="0 0 24 24"
+                                                                strokeWidth={2}
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </a>
+                                                );
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <ul className="space-y-2">
+                                            {card.services.map((service, index) => (
+                                                <li
+                                                    key={index}
+                                                    className="flex items-start"
+                                                    style={{
+                                                        fontFamily: 'Inter, sans-serif',
+                                                        fontSize: '12px',
+                                                        color: '#64748b'
+                                                    }}
                                                 >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                                <span className="leading-relaxed">{service}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                                    <svg
+                                                        className="w-3 h-3 mr-2 mt-0.5 flex-shrink-0"
+                                                        style={{ color: '#10b981' }}
+                                                        fill="currentColor"
+                                                        viewBox="0 0 20 20"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                    <span className="leading-relaxed">{service}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             ))}
                         </div>
