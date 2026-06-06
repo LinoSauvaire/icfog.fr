@@ -125,65 +125,110 @@ export default function AboutPricingSection() {
 
                             {/* Texte narratif */}
                             <div className="space-y-6">
-                                <p
-                                    className="leading-relaxed"
-                                    style={{
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
-                                        color: '#2E2E2E',
-                                        lineHeight: '1.7',
-                                        textAlign: 'justify'
-                                    }}
-                                >
-                                    <strong>Une passion pour vos appareils, une expertise fiable</strong>
-                                    <br /><br />
-                                    Depuis plus de 10 ans, notre passion pour l'univers Apple guide chacune de nos interventions. 
-                                    Nous allions expertise technique pointue et savoir-faire artisanal pour offrir à chaque client 
-                                    un service personnalisé et des réparations durables.
-                                </p>
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                <strong>Une passion Apple née en 1988</strong>
+                                <br /><br />
+                                Ma relation avec l'univers Apple a commencé bien avant d'en faire mon métier.
+                                En 1988, mes parents m'ont offert mon premier Macintosh. À une époque où
+                                l'informatique était encore peu présente dans les foyers, ce cadeau a marqué
+                                le début d'une passion qui ne m'a jamais quitté.
+                            </p>
 
-                                <p
-                                    className="leading-relaxed"
-                                    style={{
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
-                                        color: '#2E2E2E',
-                                        lineHeight: '1.7',
-                                        textAlign: 'justify'
-                                    }}
-                                >
-                                    Notre atelier est équipé des outils de diagnostic les plus récents, et nous utilisons uniquement 
-                                    des pièces certifiées, garantissant un travail de qualité irréprochable.
-                                </p>
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                Depuis ce premier Mac, j'ai suivi chaque étape de l'évolution d'Apple :
+                                des Macintosh d'origine aux Power Macintosh, de l'arrivée de Mac OS X
+                                à la transition Intel, jusqu'aux dernières générations Apple Silicon.
+                                Pendant plus de trente-cinq ans, j'ai utilisé, entretenu, étudié et accompagné
+                                ces machines aussi bien dans un cadre personnel que professionnel.
+                            </p>
 
-                                <p
-                                    className="leading-relaxed"
-                                    style={{
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
-                                        color: '#2E2E2E',
-                                        lineHeight: '1.7',
-                                        textAlign: 'justify'
-                                    }}
-                                >
-                                    Si notre cœur reste Apple, nous accompagnons également nos clients sur PC et sur tous les systèmes 
-                                    Linux et Windows, pour l'optimisation, la maintenance ou la réparation de leurs appareils.
-                                </p>
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                Cette expérience me permet aujourd'hui d'apporter bien plus qu'une simple
+                                réparation. Chaque appareil Apple possède ses spécificités techniques et
+                                son histoire. Comprendre leur évolution sur plusieurs décennies constitue
+                                un véritable atout pour établir des diagnostics précis et proposer des
+                                solutions durables.
+                            </p>
 
-                                <p
-                                    className="leading-relaxed"
-                                    style={{
-                                        fontFamily: 'Inter, sans-serif',
-                                        fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
-                                        color: '#2E2E2E',
-                                        lineHeight: '1.7',
-                                        textAlign: 'justify'
-                                    }}
-                                >
-                                    <em>Notre philosophie : redonner vie à vos outils numériques avec le même soin et la même attention 
-                                    que vous leur portez au quotidien.</em>
-                                </p>
-                            </div>
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                Mon atelier est équipé d'outils de diagnostic professionnels et chaque
+                                intervention est réalisée avec le plus grand soin. Mon objectif reste
+                                toujours le même : restaurer les performances de votre appareil,
+                                prolonger sa durée de vie et préserver vos données lorsque cela est possible.
+                            </p>
+
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                Bien que ma spécialisation soit naturellement orientée vers l'écosystème
+                                Apple, j'interviens également sur les environnements Windows et Linux afin
+                                d'accompagner particuliers, indépendants et entreprises dans leurs besoins
+                                de maintenance, d'optimisation ou de réparation.
+                            </p>
+
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontFamily: 'Inter, sans-serif',
+                                    fontSize: windowWidth < 768 ? '14px' : windowWidth < 1024 ? '16px' : '18px',
+                                    color: '#2E2E2E',
+                                    lineHeight: '1.7',
+                                    textAlign: 'justify'
+                                }}
+                            >
+                                <em>
+                                    Derrière chaque Mac, chaque iPhone ou chaque iPad se cachent souvent
+                                    des projets professionnels, des souvenirs personnels et une partie de
+                                    votre quotidien. C'est avec cet état d'esprit que j'aborde chaque
+                                    intervention, en mettant à votre service plus de trois décennies
+                                    d'expérience et une passion née d'un simple cadeau reçu en 1988.
+                                </em>
+                            </p>
+                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -210,23 +255,27 @@ export default function AboutPricingSection() {
                         </div>
 
                         {/* Grille de cartes 2x2 */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
                             {pricingCards.map((card) => (
                                 <div
                                     key={card.id}
-                                    className={`relative rounded-xl p-6 transition-all duration-300 hover:translate-y-[-2px] ${
+                                    className={`relative rounded-2xl p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 ${
                                         card.popular ? 'ring-2 ring-offset-2 ring-offset-slate-700' : ''
                                     }`}
                                     style={{
-                                        backgroundColor: card.isLinks ? 'rgba(255, 255, 255, 0.95)' : undefined,
-                                        backgroundImage: card.isLinks 
-                                            ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.95) 100%)'
-                                            : undefined,
-                                        border: card.isLinks ? '1px solid rgba(195, 141, 67, 0.2)' : undefined,
-                                        boxShadow: card.isLinks 
-                                            ? '0 20px 25px -5px rgba(195, 141, 67, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1)'
-                                            : '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-                                        filter: 'drop-shadow(0 20px 13px rgb(0 0 0 / 0.03))',
+                                        background: card.isLinks
+                                            ? 'linear-gradient(135deg,#ffffff 0%,#f8fafc 100%)'
+                                            : 'rgba(255,255,255,.06)',
+
+                                        border: card.isLinks
+                                            ? '1px solid rgba(195,141,67,.15)'
+                                            : '1px solid rgba(255,255,255,.08)',
+
+                                        boxShadow: card.isLinks
+                                            ? '0 25px 50px -12px rgba(195,141,67,.18)'
+                                            : '0 25px 50px -12px rgba(0,0,0,.25)',
+
+                                        backdropFilter: 'blur(20px)',
                                     }}
                                 >
                                     {/* Badge populaire */}
@@ -241,11 +290,11 @@ export default function AboutPricingSection() {
 
                                     {/* Titre */}
                                     <h3
-                                        className="mb-5 font-semibold text-center"
+                                        className="mb-7 font-bold text-center"
                                         style={{
                                             fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                                            fontSize: card.isLinks ? '20px' : '18px',
-                                            color: card.isLinks ? '#C38D43' : '#FFFF',
+                                            fontSize: card.isLinks ? '24px' : '24px',                                            
+                                            color: card.isLinks ? '#C38D43' : '#FFFFFF',
                                             letterSpacing: card.isLinks ? '0.3px' : 'normal'
                                         }}
                                     >
@@ -254,84 +303,68 @@ export default function AboutPricingSection() {
 
                                     {/* Liste des services */}
                                     {card.isLinks ? (
-                                        <div className="space-y-3">
+                                        <div className="space-y-4">
                                             {card.services.map((service, index) => {
                                                 const [name, url, description] = service.split('|');
+
                                                 return (
                                                     <a
                                                         key={index}
                                                         href={url}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="block p-3 rounded-lg transition-all duration-200 hover:scale-[1.02]"
-                                                        style={{
-                                                            backgroundColor: 'rgba(195, 141, 67, 0.05)',
-                                                            border: '1px solid rgba(195, 141, 67, 0.15)'
-                                                        }}
-                                                        onMouseEnter={(e) => {
-                                                            e.currentTarget.style.backgroundColor = 'rgba(195, 141, 67, 0.1)';
-                                                            e.currentTarget.style.borderColor = 'rgba(195, 141, 67, 0.3)';
-                                                        }}
-                                                        onMouseLeave={(e) => {
-                                                            e.currentTarget.style.backgroundColor = 'rgba(195, 141, 67, 0.05)';
-                                                            e.currentTarget.style.borderColor = 'rgba(195, 141, 67, 0.15)';
-                                                        }}
+                                                        className="group block"
                                                     >
-                                                        <div className="flex items-start gap-3">
-                                                            <div 
-                                                                className="p-2 rounded-md flex-shrink-0 mt-0.5"
-                                                                style={{ backgroundColor: 'rgba(195, 141, 67, 0.15)' }}
-                                                            >
-                                                                <svg
-                                                                    className="w-4 h-4"
-                                                                    fill="none"
-                                                                    stroke="#C38D43"
-                                                                    viewBox="0 0 24 24"
-                                                                    strokeWidth={2}
-                                                                >
-                                                                    <path
-                                                                        strokeLinecap="round"
-                                                                        strokeLinejoin="round"
-                                                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                                                                    />
-                                                                </svg>
-                                                            </div>
-                                                            <div className="flex-1 min-w-0">
+                                                        <div
+                                                            className="rounded-xl p-4 transition-all duration-300 group-hover:scale-[1.02]"
+                                                            style={{
+                                                                background:
+                                                                    'linear-gradient(135deg,#ffffff 0%,#f8fafc 100%)',
+                                                                border:
+                                                                    '1px solid rgba(195,141,67,.15)',
+                                                            }}
+                                                        >
+                                                            <div className="flex justify-between items-start gap-4">
+
+                                                                <div className="flex-1">
+                                                                    <div
+                                                                        style={{
+                                                                            fontSize: '18px',
+                                                                            fontWeight: 700,
+                                                                            color: '#334155',
+                                                                            marginBottom: '6px'
+                                                                        }}
+                                                                    >
+                                                                        {name}
+                                                                    </div>
+
+                                                                    <div
+                                                                        style={{
+                                                                            fontSize: '13px',
+                                                                            lineHeight: '1.6',
+                                                                            color: '#64748B'
+                                                                        }}
+                                                                    >
+                                                                        {description}
+                                                                    </div>
+                                                                </div>
+
                                                                 <div
-                                                                    className="font-semibold mb-1"
+                                                                    className="flex items-center justify-center rounded-xl flex-shrink-0"
                                                                     style={{
-                                                                        fontFamily: 'Inter, sans-serif',
-                                                                        fontSize: '14px',
-                                                                        color: '#C38D43'
+                                                                        width: '46px',
+                                                                        height: '46px',
+                                                                        background:
+                                                                            'rgba(195,141,67,.1)',
+                                                                        color: '#C38D43',
+                                                                        fontSize: '18px',
+                                                                        fontWeight: 700
                                                                     }}
                                                                 >
-                                                                    {name}
+                                                                    ↗
                                                                 </div>
-                                                                <div
-                                                                    className="leading-relaxed"
-                                                                    style={{
-                                                                        fontFamily: 'Inter, sans-serif',
-                                                                        fontSize: '11px',
-                                                                        color: '#64748b',
-                                                                        lineHeight: '1.4'
-                                                                    }}
-                                                                >
-                                                                    {description}
-                                                                </div>
+
                                                             </div>
-                                                            <svg
-                                                                className="w-4 h-4 flex-shrink-0 mt-1"
-                                                                fill="none"
-                                                                stroke="#C38D43"
-                                                                viewBox="0 0 24 24"
-                                                                strokeWidth={2}
-                                                            >
-                                                                <path
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                                                />
-                                                            </svg>
                                                         </div>
                                                     </a>
                                                 );
@@ -345,12 +378,13 @@ export default function AboutPricingSection() {
                                                     className="flex items-start"
                                                     style={{
                                                         fontFamily: 'Inter, sans-serif',
-                                                        fontSize: '12px',
+                                                        fontSize: '15px',
+                                                        lineHeight: '1.8',
                                                         color: '#64748b'
                                                     }}
                                                 >
                                                     <svg
-                                                        className="w-3 h-3 mr-2 mt-0.5 flex-shrink-0"
+                                                        className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"
                                                         style={{ color: '#10b981' }}
                                                         fill="currentColor"
                                                         viewBox="0 0 20 20"

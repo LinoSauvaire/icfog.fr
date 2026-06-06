@@ -281,7 +281,7 @@ export default function AppleSection() {
                 <div className="max-w-5xl mx-auto mb-24">
 
                     <details className="border-b py-6">
-                        <summary className="font-semibold text-xl cursor-pointer">
+                        <summary className="font-semibold text-xl cursor-pointer text-black">
                             Réparation MacBook
                         </summary>
 
@@ -294,7 +294,7 @@ export default function AppleSection() {
                     </details>
 
                     <details className="border-b py-6">
-                        <summary className="font-semibold text-xl cursor-pointer">
+                        <summary className="font-semibold text-xl cursor-pointer text-black">
                             Réparation iPhone
                         </summary>
 
@@ -306,7 +306,7 @@ export default function AppleSection() {
                     </details>
 
                     <details className="border-b py-6">
-                        <summary className="font-semibold text-xl cursor-pointer">
+                        <summary className="font-semibold text-xl cursor-pointer text-black">
                             Réparation iMac
                         </summary>
 

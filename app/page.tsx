@@ -13,9 +13,9 @@ export default function Home() {
             <NavBar/>
             <HeroSection/>
             <ServicesSection />
+            <AppleSection />
             <CarouselSection />
             <AboutPricingSection />
-            <AppleSection />
             <ContactSection />
             <Footer />
         </>
