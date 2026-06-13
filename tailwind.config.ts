@@ -1,4 +1,3 @@
-
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -47,7 +46,10 @@ const config: Config = {
                 'secondary': '#64748b'
             }
         }
-    }
+    },
+    plugins: [
+        require('@tailwindcss/typography'),
+    ]
 }
 
 export default config

@@ -61,7 +61,7 @@ const NavBar = () => {
                                 document.querySelector('#pricing')?.scrollIntoView({behavior: 'smooth'});
                             }}
                         >
-                            Tarifs
+                            Prestations
                         </Link>
                         <Link
                             href="#contact"

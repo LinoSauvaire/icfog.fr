@@ -6,6 +6,7 @@ import AboutPricingSection from "@/app/_component/hero/AboutPricingSection";
 import ContactSection from "@/app/_component/hero/ContactSection";
 import Footer from "@/app/_component/hero/Footer";
 import AppleSection from "./_component/hero/AppleSection";
+import BlogHero from "./_component/hero/blog/BlogHero";
 
 export default function Home() {
     return (
@@ -16,6 +17,7 @@ export default function Home() {
             <AppleSection />
             <CarouselSection />
             <AboutPricingSection />
+            <BlogHero />
             <ContactSection />
             <Footer />
         </>
