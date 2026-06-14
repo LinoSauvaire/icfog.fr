@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const getPosts = () => {
+function getPosts() {
   const files = fs.readdirSync(path.join('posts'));
 
   const posts = files.map((filename) => {
@@ -22,7 +22,7 @@ const getPosts = () => {
   });
 
   return posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
-};
+}
 
 export default function BlogPage() {
   const posts = getPosts();

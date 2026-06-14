@@ -5,16 +5,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
-
-export async function generateStaticParams() {
-  const files = await fs.promises.readdir(path.join('posts'));
+export function generateStaticParams() {
+  const files = fs.readdirSync(path.join('posts'));
   return files.map((filename) => ({
     slug: filename.replace('.md', ''),
   }));
 }
 
-async function getPost(slug: string) {
-  const markdownWithMeta = await fs.promises.readFile(
+function getPost(slug: string) {
+  const markdownWithMeta = fs.readFileSync(
     path.join('posts', slug + '.md'),
     'utf-8'
   );
@@ -25,8 +24,15 @@ async function getPost(slug: string) {
   };
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const { frontmatter, content } = await getPost(params.slug);
+type Props = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export default async function PostPage({ params }: Props) {
+  const { slug } = await params;
+  const { frontmatter, content } = getPost(slug);
 
   const postDate = new Date(frontmatter.date).toLocaleDateString('fr-FR', {
     year: 'numeric',
