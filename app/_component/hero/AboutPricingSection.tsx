@@ -86,7 +86,7 @@ export default function AboutPricingSection() {
 
                 {/* Section À propos (gauche) - 50% */}
                 <div className="w-full lg:w-1/2 relative flex items-center overflow-hidden">
-                    {/* Image de fond avec parallaxe */}
+                    {/* Image de fond avec parallaxe sécurisée (pas d'overflow sur mobile) */}
                     <div
                         className="absolute inset-0"
                         style={{
@@ -94,7 +94,7 @@ export default function AboutPricingSection() {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundAttachment: windowWidth > 1024 ? 'fixed' : 'scroll',
-                            transform: `translateY(${scrollY * 0.3}px)`,
+                            transform: windowWidth > 1024 ? `translateY(${scrollY * 0.15}px)` : 'none',
                         }}
                     />
 
@@ -236,13 +236,13 @@ export default function AboutPricingSection() {
                 {/* Section Tarifs (droite) - 50% */}
                 <div
                     className="w-full lg:w-1/2 flex items-center px-8 sm:px-12 lg:px-16 py-16 lg:py-24"
-                    style={{ backgroundColor: '#334155' }}
+                    style={{ background: 'linear-gradient(135deg, #344154 0%, #1a2333 100%)' }}
                 >
                     <div className="w-full max-w-2xl mx-auto">
                         {/* Titre centré */}
                         <div className="text-center mb-12">
                             <h2
-                                className="font-bold"
+                                className="font-bold mb-3"
                                 style={{
                                     fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
                                     color: '#FFFFFF',
@@ -252,6 +252,7 @@ export default function AboutPricingSection() {
                             >
                                 Prestations
                             </h2>
+                            <div className="w-12 h-1 bg-[#C38D43] mx-auto rounded-full" />
                         </div>
 
                         {/* Grille de cartes 2x2 */}
@@ -259,30 +260,33 @@ export default function AboutPricingSection() {
                             {pricingCards.map((card) => (
                                 <div
                                     key={card.id}
-                                    className={`relative rounded-2xl p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1 ${
-                                        card.popular ? 'ring-2 ring-offset-2 ring-offset-slate-700' : ''
+                                    className={`relative rounded-2xl p-8 lg:p-10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${
+                                        card.popular ? 'ring-2 ring-offset-2 ring-offset-[#1a2333] ring-[#C38D43]' : ''
                                     }`}
                                     style={{
-                                        background: card.isLinks
-                                            ? 'linear-gradient(135deg,#ffffff 0%,#f8fafc 100%)'
-                                            : 'rgba(255,255,255,.06)',
+                                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
 
                                         border: card.isLinks
-                                            ? '1px solid rgba(195,141,67,.15)'
-                                            : '1px solid rgba(255,255,255,.08)',
+                                            ? '1px solid rgba(195,141,67,0.25)'
+                                            : card.popular
+                                            ? '1px solid rgba(195,141,67,0.4)'
+                                            : '1px solid rgba(255,255,255,0.08)',
 
-                                        boxShadow: card.isLinks
-                                            ? '0 25px 50px -12px rgba(195,141,67,.18)'
-                                            : '0 25px 50px -12px rgba(0,0,0,.25)',
+                                        boxShadow: card.popular
+                                            ? '0 20px 40px -15px rgba(195,141,67,0.15), 0 10px 20px -10px rgba(0,0,0,0.4)'
+                                            : '0 20px 40px -15px rgba(0,0,0,0.35)',
 
-                                        backdropFilter: 'blur(20px)',
+                                        backdropFilter: 'blur(24px)',
                                     }}
                                 >
                                     {/* Badge populaire */}
                                     {card.popular && (
                                         <div
-                                            className="absolute -top-2 left-1/2 transform -translate-x-1/2 px-3 py-1 rounded-full text-xs font-medium text-white"
-                                            style={{ backgroundColor: '#C38D43' }}
+                                            className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-white shadow-md"
+                                            style={{ 
+                                                background: 'linear-gradient(135deg, #C38D43 0%, #A27232 100%)',
+                                                border: '1px solid rgba(255,255,255,0.1)'
+                                            }}
                                         >
                                             Populaire
                                         </div>
@@ -290,12 +294,12 @@ export default function AboutPricingSection() {
 
                                     {/* Titre */}
                                     <h3
-                                        className="mb-7 font-bold text-center"
+                                        className="mb-8 font-bold text-center tracking-wide"
                                         style={{
                                             fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif',
-                                            fontSize: card.isLinks ? '24px' : '24px',                                            
+                                            fontSize: '22px',                                            
                                             color: card.isLinks ? '#C38D43' : '#FFFFFF',
-                                            letterSpacing: card.isLinks ? '0.3px' : 'normal'
+                                            letterSpacing: '0.5px'
                                         }}
                                     >
                                         {card.title}
@@ -316,23 +320,22 @@ export default function AboutPricingSection() {
                                                         className="group block"
                                                     >
                                                         <div
-                                                            className="rounded-xl p-4 transition-all duration-300 group-hover:scale-[1.02]"
+                                                            className="rounded-xl p-4 transition-all duration-300 group-hover:scale-[1.03] group-hover:bg-[rgba(255,255,255,0.08)] group-hover:border-[rgba(195,141,67,0.4)]"
                                                             style={{
-                                                                background:
-                                                                    'linear-gradient(135deg,#ffffff 0%,#f8fafc 100%)',
-                                                                border:
-                                                                    '1px solid rgba(195,141,67,.15)',
+                                                                background: 'rgba(255, 255, 255, 0.04)',
+                                                                border: '1px solid rgba(255, 255, 255, 0.08)',
+                                                                boxShadow: '0 4px 20px -2px rgba(0, 0, 0, 0.2)'
                                                             }}
                                                         >
-                                                            <div className="flex justify-between items-start gap-4">
+                                                            <div className="flex justify-between items-center gap-4">
 
                                                                 <div className="flex-1">
                                                                     <div
                                                                         style={{
-                                                                            fontSize: '18px',
-                                                                            fontWeight: 700,
-                                                                            color: '#334155',
-                                                                            marginBottom: '6px'
+                                                                            fontSize: '16px',
+                                                                            fontWeight: 600,
+                                                                            color: '#FFFFFF',
+                                                                            marginBottom: '4px'
                                                                         }}
                                                                     >
                                                                         {name}
@@ -340,9 +343,9 @@ export default function AboutPricingSection() {
 
                                                                     <div
                                                                         style={{
-                                                                            fontSize: '13px',
-                                                                            lineHeight: '1.6',
-                                                                            color: '#64748B'
+                                                                            fontSize: '12px',
+                                                                            lineHeight: '1.5',
+                                                                            color: '#94A3B8'
                                                                         }}
                                                                     >
                                                                         {description}
@@ -350,14 +353,14 @@ export default function AboutPricingSection() {
                                                                 </div>
 
                                                                 <div
-                                                                    className="flex items-center justify-center rounded-xl flex-shrink-0"
+                                                                    className="flex items-center justify-center rounded-xl flex-shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                                                                     style={{
-                                                                        width: '46px',
-                                                                        height: '46px',
+                                                                        width: '38px',
+                                                                        height: '38px',
                                                                         background:
-                                                                            'rgba(195,141,67,.1)',
+                                                                            'rgba(195,141,67,.15)',
                                                                         color: '#C38D43',
-                                                                        fontSize: '18px',
+                                                                        fontSize: '16px',
                                                                         fontWeight: 700
                                                                     }}
                                                                 >
@@ -371,7 +374,7 @@ export default function AboutPricingSection() {
                                             })}
                                         </div>
                                     ) : (
-                                        <ul className="space-y-2">
+                                        <ul className="space-y-4">
                                             {card.services.map((service, index) => (
                                                 <li
                                                     key={index}
@@ -379,13 +382,13 @@ export default function AboutPricingSection() {
                                                     style={{
                                                         fontFamily: 'Inter, sans-serif',
                                                         fontSize: '15px',
-                                                        lineHeight: '1.8',
-                                                        color: '#64748b'
+                                                        lineHeight: '1.6',
+                                                        color: '#F8FAFC'
                                                     }}
                                                 >
                                                     <svg
                                                         className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0"
-                                                        style={{ color: '#10b981' }}
+                                                        style={{ color: '#C38D43' }}
                                                         fill="currentColor"
                                                         viewBox="0 0 20 20"
                                                     >
@@ -419,9 +422,11 @@ export default function AboutPricingSection() {
                                     }}
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.backgroundColor = '#f8fafc';
+                                        e.currentTarget.style.color = '#B27C33';
                                     }}
                                     onMouseLeave={(e) => {
                                         e.currentTarget.style.backgroundColor = '#FFFFFF';
+                                        e.currentTarget.style.color = '#C38D43';
                                     }}
                                 >
                                     Prendre RDV

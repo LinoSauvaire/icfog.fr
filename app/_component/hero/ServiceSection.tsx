@@ -17,7 +17,7 @@ const services: Service[] = [
         title: 'Dépannage',
         description: 'Diagnostic et réparation rapide de vos équipements',
         backText: 'Service de dépannage informatique professionnel avec intervention rapide pour tous types de pannes.',
-        backIcon: '🔧'
+        backIcon: '/assets/svg/WrenchIcon.svg'
     },
     {
         id: 2,
@@ -25,7 +25,7 @@ const services: Service[] = [
         title: 'Ordinateur fixe et portable',
         description: 'Maintenance et réparation des ordinateurs',
         backText: 'Réparation et maintenance d\'ordinateurs fixes et portables toutes marques. Optimisation des performances.',
-        backIcon: '🖥️'
+        backIcon: '/assets/svg/ScreenIcon.svg'
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const services: Service[] = [
         title: 'Gestion & installation de réseaux',
         description: 'Solutions réseau professionnelles',
         backText: 'Configuration et sécurisation de réseaux d\'entreprise. Installation de serveurs et équipements réseau.',
-        backIcon: '🌐'
+        backIcon: '/assets/svg/CyberSecurityIcon.svg'
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ const services: Service[] = [
         title: 'Installation de périphériques',
         description: 'Configuration de vos équipements',
         backText: 'Installation et configuration de tous types de périphériques : imprimantes, scanners, équipements réseau.',
-        backIcon: '🖨️'
+        backIcon: '/assets/svg/FaxIcon.svg'
     },
     {
         id: 5,
@@ -49,7 +49,7 @@ const services: Service[] = [
         title: 'Réparation et assistance informatique',
         description: 'Support technique personnalisé',
         backText: 'Assistance technique complète et dépannage informatique sur site ou à distance selon vos besoins.',
-        backIcon: '💻'
+        backIcon: '/assets/svg/LaptopIcon.svg'
     },
      {
         id: 6,
@@ -57,7 +57,7 @@ const services: Service[] = [
         title: 'Sauvegarde & récupération de données',
         description: 'Protection et restauration de vos données',
         backText: 'Nous mettons en place des solutions de sauvegarde adaptées à vos besoins et à votre environnement. En cas de perte de données, nous intervenons pour tenter leur récupération et, si nécessaire, faisons appel à un laboratoire spécialisé. Un accompagnement est assuré pour mieux sécuriser vos données au quotidien.',
-        backIcon: '💾'
+        backIcon: '/assets/svg/DatabaseIcon.svg'
     }
     
 ];
@@ -111,7 +111,7 @@ export default function ServicesSection() {
                     {services.map((service) => (
                         <div
                             key={service.id}
-                            className="relative h-64 cursor-pointer group"
+                            className="relative min-h-[280px] md:h-64 cursor-pointer group"
                             onClick={() => handleCardFlip(service.id)}
                             style={{ perspective: '1000px' }}
                         >
@@ -130,7 +130,12 @@ export default function ServicesSection() {
                                     style={{
                                         backfaceVisibility: 'hidden',
                                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                                        filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))'
+                                        filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0
                                     }}
                                 >
                                     {/* Icône */}
@@ -149,7 +154,7 @@ export default function ServicesSection() {
 
                                     {/* Titre */}
                                     <h3
-                                        className="mb-3 font-semibold"
+                                        className="mb-3 font-semibold px-2"
                                         style={{
                                             fontFamily: 'Inter, sans-serif',
                                             fontSize: '18px',
@@ -161,6 +166,7 @@ export default function ServicesSection() {
 
                                     {/* Description */}
                                     <p
+                                        className="px-2"
                                         style={{
                                             fontFamily: 'Inter, sans-serif',
                                             fontSize: '14px',
@@ -187,20 +193,32 @@ export default function ServicesSection() {
                                         backfaceVisibility: 'hidden',
                                         transform: 'rotateY(180deg)',
                                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                                        filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))'
+                                        filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))',
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        overflowY: 'auto' // Permet de faire défiler le long texte sur mobile dans la carte si besoin
                                     }}
                                 >
                                     {/* Icône secondaire */}
-                                    <div
-                                        className="text-6xl mb-4"
-                                        style={{ color: '#C38D43' }}
-                                    >
-                                        {service.backIcon}
+                                    <div className="mb-4 flex items-center justify-center">
+                                        <img
+                                            src={service.backIcon}
+                                            alt={service.title}
+                                            className="w-12 h-12 md:w-16 md:h-16"
+                                            style={{
+                                                filter: 'brightness(0) saturate(100%) invert(64%) sepia(31%) saturate(1054%) hue-rotate(359deg) brightness(87%) contrast(83%)',
+                                                objectFit: 'contain',
+                                                objectPosition: 'center'
+                                            }}
+                                        />
                                     </div>
 
                                     {/* Texte explicatif */}
                                     <p
-                                        className="leading-relaxed"
+                                        className="leading-relaxed px-2 text-[13px] md:text-[14px]"
                                         style={{
                                             fontFamily: 'Inter, sans-serif',
                                             fontSize: '14px',
