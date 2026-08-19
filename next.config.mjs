@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  distDir: 'build',
+
   images: {
     remotePatterns: [
       {
@@ -7,6 +9,11 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+  },
+
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
   },
 };
 
