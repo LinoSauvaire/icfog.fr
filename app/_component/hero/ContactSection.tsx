@@ -3,10 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 
-const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
-const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
-const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
+const MapComponent = dynamic(() => import('./MapComponent'), { ssr: false });
 
 interface FormData {
     firstName: string;
@@ -458,7 +455,7 @@ export default function ContactSection() {
                                             Téléphone
                                         </h4>
                                         <a
-                                            href="tel:+330490577634"
+                                            href="tel:+330620161688"
                                             style={{
                                                 fontFamily: 'Inter, sans-serif',
                                                 fontSize: '16px',
@@ -467,7 +464,7 @@ export default function ContactSection() {
                                             }}
                                             className="hover:underline"
                                         >
-                                            +33 04 90 57 76 34
+                                            +33 06 20 16 16 88
                                         </a>
                                     </div>
                                 </div>
@@ -476,12 +473,6 @@ export default function ContactSection() {
                             {/* Carte Leaflet */}
                             {isMounted && (
                                 <div className="mt-8">
-                                    <link
-                                        rel="stylesheet"
-                                        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-                                        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-                                        crossOrigin=""
-                                    />
                                     <div
                                         style={{
                                             height: '300px',
@@ -491,23 +482,7 @@ export default function ContactSection() {
                                             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                                         }}
                                     >
-                                        <MapContainer
-                                            center={[43.6425, 5.0983]}
-                                            zoom={16}
-                                            style={{ height: '100%', width: '100%' }}
-                                        >
-                                            <TileLayer
-                                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                            />
-                                            <Marker position={[43.641081492255296, 5.095579902413643]}>
-                                                <Popup>
-                                                    <strong>IcFog Informatique</strong><br />
-                                                    45 Place du Général de Gaulle<br />
-                                                    13300 Salon-de-Provence
-                                                </Popup>
-                                            </Marker>
-                                        </MapContainer>
+                                        <MapComponent />
                                     </div>
                                 </div>
                             )}
