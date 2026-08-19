@@ -57,7 +57,7 @@ function renderMarkdown(markdown: string): string {
     return html;
 }
 
-async function getSeoData(): Promise<SeoDataData[]> {
+async function getSeoData(): Promise<SeoCityData[]> {
     const filePath = path.join(process.cwd(), "public", "data", "icfog_seo_local_data.json");
     const fileContent = fs.readFileSync(filePath, "utf-8");
     return JSON.parse(fileContent);
