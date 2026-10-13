@@ -24,6 +24,7 @@ export default function ContactSection() {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [submitError, setSubmitError] = useState('');
     const [windowWidth, setWindowWidth] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
@@ -68,6 +69,7 @@ export default function ContactSection() {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus('idle');
+        setSubmitError('');
 
         try {
             const response = await fetch('/api/contact', {
@@ -88,10 +90,37 @@ export default function ContactSection() {
                     message: ''
                 });
             } else {
+                const responseText = await response.text();
+                let errorMessage = responseText;
+
+                try {
+                    const errorBody: unknown = JSON.parse(responseText);
+                    if (
+                        typeof errorBody === 'object' &&
+                        errorBody !== null &&
+                        'message' in errorBody &&
+                        typeof errorBody.message === 'string'
+                    ) {
+                        errorMessage = errorBody.message;
+                    }
+                } catch {
+                    // Keep the raw response when it is not JSON.
+                }
+
+                setSubmitError(
+                    `Erreur HTTP ${response.status} ${response.statusText}: ${
+                        errorMessage || 'Réponse vide du serveur'
+                    }`
+                );
                 setSubmitStatus('error');
             }
         } catch (error) {
             console.error('Erreur lors de l\'envoi:', error);
+            setSubmitError(
+                error instanceof Error
+                    ? `Erreur réseau : ${error.message}`
+                    : `Erreur réseau : ${String(error)}`
+            );
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
@@ -331,7 +360,7 @@ export default function ContactSection() {
                                 {submitStatus === 'error' && (
                                     <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                                         <p style={{ color: '#dc2626', fontFamily: 'Inter, sans-serif' }}>
-                                            Erreur lors de l'envoi. Veuillez réessayer.
+                                            {submitError || 'Erreur lors de l’envoi. Veuillez réessayer.'}
                                         </p>
                                     </div>
                                 )}
