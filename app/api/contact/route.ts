@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 
         const mailOptions = {
             from: emailUser,
-            to: 'gilles@icfog.fr',
+            to: 'sauvairelino@gmail.com',
             replyTo: email,
             subject: `Nouveau message de contact - ${firstName} ${lastName}`,
             html: `
@@ -100,9 +100,7 @@ export async function POST(request: NextRequest) {
         const configuredPassword = process.env.EMAIL_PASS?.replace(/\s/g, '');
         const configurationDetails = `Compte SMTP : ${process.env.EMAIL_USER?.trim() || 'non configuré'}, mot de passe : ${configuredPassword ? `${configuredPassword.length} caractères` : 'non configuré'}`;
 
-        return NextResponse.json(
-            { message: `Erreur SMTP${errorCode} : ${errorDetails}. ${configurationDetails}` },
-            { status: 500 }
-        );
+        console.error(`Détails SMTP${errorCode} : ${errorDetails}. ${configurationDetails}`);
+        return NextResponse.json({ message: 'Erreur lors de l’envoi du message' }, { status: 500 });
     }
 }

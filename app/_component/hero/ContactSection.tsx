@@ -91,36 +91,17 @@ export default function ContactSection() {
                 });
             } else {
                 const responseText = await response.text();
-                let errorMessage = responseText;
-
-                try {
-                    const errorBody: unknown = JSON.parse(responseText);
-                    if (
-                        typeof errorBody === 'object' &&
-                        errorBody !== null &&
-                        'message' in errorBody &&
-                        typeof errorBody.message === 'string'
-                    ) {
-                        errorMessage = errorBody.message;
-                    }
-                } catch {
-                    // Keep the raw response when it is not JSON.
-                }
-
-                setSubmitError(
-                    `Erreur HTTP ${response.status} ${response.statusText}: ${
-                        errorMessage || 'Réponse vide du serveur'
-                    }`
-                );
+                console.error('Erreur API contact:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    response: responseText,
+                });
+                setSubmitError('Une erreur est survenue lors de l’envoi. Veuillez réessayer.');
                 setSubmitStatus('error');
             }
         } catch (error) {
             console.error('Erreur lors de l\'envoi:', error);
-            setSubmitError(
-                error instanceof Error
-                    ? `Erreur réseau : ${error.message}`
-                    : `Erreur réseau : ${String(error)}`
-            );
+            setSubmitError('Une erreur est survenue lors de l’envoi. Veuillez réessayer.');
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
