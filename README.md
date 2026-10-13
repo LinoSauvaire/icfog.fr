@@ -54,6 +54,20 @@ Pour démarrer le projet localement, suivez ces étapes :
 
 5. Rendez-vous sur [http://localhost:3000](http://localhost:3000) pour visualiser le site en développement.
 
+### Configuration du formulaire de contact
+
+Le formulaire utilise SMTP Gmail. Créez un fichier `.env.local` à la racine du projet
+avec l’adresse Gmail utilisée pour l’envoi et un **mot de passe d’application Google**
+(et non le mot de passe habituel du compte) :
+
+```env
+EMAIL_USER=votre-adresse@gmail.com
+EMAIL_PASS=mot-de-passe-d-application
+```
+
+Le compte Google doit avoir la validation en deux étapes activée pour pouvoir créer un
+mot de passe d’application.
+
 ## Déploiement
 
 Ce projet peut facilement être déployé sur [Vercel](https://vercel.com).
