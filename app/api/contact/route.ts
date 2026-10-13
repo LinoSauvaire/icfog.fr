@@ -87,6 +87,20 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ message: 'Email envoyé avec succès' }, { status: 200 });
     } catch (error) {
         console.error('Erreur lors de l\'envoi de l\'email:', error);
-        return NextResponse.json({ message: 'Erreur lors de l\'envoi' }, { status: 500 });
+
+        const errorDetails = error instanceof Error
+            ? error.message
+            : 'Erreur inconnue lors de l’envoi de l’email';
+        const smtpError = typeof error === 'object' && error !== null
+            ? error as { code?: string; responseCode?: number }
+            : {};
+        const errorCode = smtpError.code
+            ? ` (${smtpError.code}${smtpError.responseCode ? ` ${smtpError.responseCode}` : ''})`
+            : '';
+
+        return NextResponse.json(
+            { message: `Erreur SMTP${errorCode} : ${errorDetails}` },
+            { status: 500 }
+        );
     }
 }
